@@ -9,7 +9,7 @@ function App() {
 		<>
 			<Header />
 			<Routes>
-				<Route path={'/'} element={<StartPage />}/>
+				<Route path={'/*'} element={<StartPage />}/>
 				<Route path={'/game'} element={<Level />}/>
 				<Route path={'/settings'} element={<SettingPage />}/>
 			</Routes>
