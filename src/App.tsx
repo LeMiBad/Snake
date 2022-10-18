@@ -1,26 +1,20 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import Header from './components/Header/Header';
+import StartPage from './components/StartPage/StartPage';
+import Level from './components/Level/Level';
+import { Route, Routes } from 'react-router-dom';
+import SettingPage from './components/SettingPage/SettingPage';
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+	return (
+		<>
+			<Header />
+			<Routes>
+				<Route path={'/'} element={<StartPage />}/>
+				<Route path={'/game'} element={<Level />}/>
+				<Route path={'/settings'} element={<SettingPage />}/>
+			</Routes>
+		</>
+	)
 }
 
 export default App;

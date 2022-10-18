@@ -1,0 +1,27 @@
+@keyframes open
+    0%
+        transform: scale(0, 0)
+    100%
+        transform: scale(1, 1)
+
+.gameWrapper
+    animation-duration: 0.5s
+    animation-name: open
+    -webkit-box-shadow: 23px 23px 5px 0px rgba(41, 96, 40, 0.6)
+    -moz-box-shadow: 23px 23px 5px 0px rgba(41, 96, 40, 0.6)
+    box-shadow: 23px 23px 5px 0px rgba(41, 96, 40, 0.6)
+    width: 60vh
+    height: 60vh
+    display: flex
+    flex-direction: column
+    .row
+        display: flex
+        width: 100%
+        .cellLight
+            width: 5%
+            height: 100%
+            background-color: #aad751
+        .cellDark
+            width: 5%
+            height: 100%
+            background-color: #a2d149
