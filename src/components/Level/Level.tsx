@@ -1,18 +1,22 @@
-import { useStore } from 'effector-react'
-import { $gameSize } from '../../store/levelModel'
+import { Link } from 'react-router-dom'
 import CenterWrapper from '../CenterWrapper/CenterWrapper'
+import CellsGenerator from './CellsGenerator'
 import css from './Level.module.sass'
-import { cellsGenerator } from './logic'
+import Snake from './Snake'
 
 const Level = () => {
-    const size = useStore($gameSize)
-
-
     return (
         <CenterWrapper>
-            <div className={css.gameWrapper}>
-                {cellsGenerator(size).map((row, i) => <div key={i} style={{height: `${100 / size}%`}} className={css.row}>{row.map((cell, key) => <div key={key} style={{width: `${100 / size}%`}} className={(cell)? css.cellLight : css.cellDark}></div>)}</div>)}
-            </div>
+            <>
+                <div className={css.gameWrapper}>
+                    <Link style={{zIndex: 3000}} to={'/'}>gg</Link>
+                    <CellsGenerator/>
+                </div>
+                <div className={css.snakeWrapper}>
+                    <Link style={{zIndex: 3000}} to={'/'}>gg</Link>
+                    <Snake/>
+                </div>
+            </>
         </CenterWrapper>
     )
 }

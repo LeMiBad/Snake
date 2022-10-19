@@ -3,6 +3,43 @@
         transform: scale(0, 0)
     100%
         transform: scale(1, 1)
+@keyframes snakeOpen
+    0%
+        transform: translateX(-100vw)
+    100%
+        transform: translateX(0)
+
+.body
+    width: 5%
+    height: 100%
+    background-color: #2a77ce
+.head
+    width: 5%
+    height: 100%
+    background-color: #121d83
+.cellLight
+    width: 5%
+    height: 100%
+    background-color: #aad751
+.cellDark
+    width: 5%
+    height: 100%
+    background-color: #a2d149
+.empty
+    width: 5%
+    height: 100%
+
+.snakeWrapper
+    width: 60vh
+    height: 60vh
+    animation-duration: 1s
+    animation-name: snakeOpen
+    position: absolute
+    display: flex
+    flex-direction: column
+    .row
+        display: flex
+        width: 100%
 
 .gameWrapper
     animation-duration: 0.5s
@@ -17,11 +54,3 @@
     .row
         display: flex
         width: 100%
-        .cellLight
-            width: 5%
-            height: 100%
-            background-color: #aad751
-        .cellDark
-            width: 5%
-            height: 100%
-            background-color: #a2d149

@@ -4,12 +4,37 @@
     100%
         transform: translateX(0)
 
+@keyframes out
+    0%
+        transform: translateY(0)
+    100%
+        transform: translateY(-15vh)
+        display: none
+
+@keyframes enter
+    0%
+        transform: translateY(-100vh)
+    100%
+        transform: translateY(0)
+
+
+.out
+    animation-duration: 0.5s
+    animation-name: out !important
+
+.enter
+    animation-duration: 0.3s
+    animation-name: enter !important
+
+.slidein
+    animation-duration: 1s
+    animation-name: slidein !important
+
 header
     -webkit-box-shadow: 23px 23px 5px 0px rgba(41, 96, 40, 0.6);
     -moz-box-shadow: 23px 23px 5px 0px rgba(41, 96, 40, 0.6);
     box-shadow: 23px 23px 5px 0px rgba(41, 96, 40, 0.6);
-    animation-duration: 1s
-    animation-name: slidein
+    animation-fill-mode: both
     position: absolute
     z-index: 3
     width: 80%
