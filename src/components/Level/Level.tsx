@@ -1,19 +1,32 @@
-import { Link } from 'react-router-dom'
+import { useStore } from 'effector-react'
+import { Navigate } from 'react-router-dom'
+import { $appleCounter, $record } from '../../store/apple'
+import { $snakeParams } from '../../store/snakeModel'
 import CenterWrapper from '../CenterWrapper/CenterWrapper'
 import CellsGenerator from './CellsGenerator'
 import css from './Level.module.sass'
 import Snake from './Snake'
+import Timer from './Timer'
 
 const Level = () => {
+    const appleCounter = useStore($appleCounter)
+    const record = useStore($record)
+    const { isLoose } = useStore($snakeParams)
+
+    if(isLoose) return <Navigate to={'/'}/>
+
     return (
         <CenterWrapper>
             <>
+                <div className={css.stats}>
+                    <div><div>{appleCounter} Яблок</div></div>
+                    <div><div>Максимум: {record}</div></div>
+                    <div><Timer/></div>
+                </div>
                 <div className={css.gameWrapper}>
-                    <Link style={{zIndex: 3000}} to={'/'}>gg</Link>
                     <CellsGenerator/>
                 </div>
                 <div className={css.snakeWrapper}>
-                    <Link style={{zIndex: 3000}} to={'/'}>gg</Link>
                     <Snake/>
                 </div>
             </>
