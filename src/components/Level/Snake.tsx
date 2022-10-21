@@ -1,6 +1,6 @@
 import { useStore } from 'effector-react'
 import { useEffect } from 'react'
-import { $apple, $appleCounter, incApple, setLevel } from '../../store/apple'
+import { $apple, $appleCounter, incApple, setNewApple } from '../../store/apple'
 import { $gameSize } from '../../store/settingModel'
 import { $snakeParams, snakeApi } from '../../store/snakeModel'
 import css from './Level.module.sass'
@@ -16,7 +16,7 @@ const Snake = () => {
     useEffect(() => {
         if (apple[0] === cord[cord.length - 1][0] && apple[1] === cord[cord.length - 1][1]) {
             snakeApi.eat()
-            setLevel(size)
+            setNewApple({size: size, cord: cord})
             incApple(appleCounter)
         }
     })
@@ -49,8 +49,6 @@ const Snake = () => {
             else if (['ы', 's'].includes(key.toLowerCase())) snakeApi.vectorDown()
             else if (['ф', 'a'].includes(key.toLowerCase())) snakeApi.vectorLeft()
             else if (['л', 'k'].includes(key.toLowerCase())) snakeApi.eat()
-
-            // window.removeEventListener('keydown', snakeMoveHandler)
         }
         window.addEventListener('keydown', snakeMoveHandler)
 
@@ -63,6 +61,16 @@ const Snake = () => {
     return (
         <>
             {cells.map((row, i) => <div key={i} style={{ height: `${100 / size}%` }} className={css.row}>{row.map((cellStyle, key) => <div key={key} style={{ width: `${100 / size}%` }} className={css[cellStyle]}></div>)}</div>)}
+            <div className={css.keyBoard} style={{display: 'none'}}>
+                <div>
+                    <button onClick={() => {snakeApi.vectorLeft()}}>&#129152;</button>
+                    <button onClick={() => {snakeApi.vectorRight()}}>&#129154;</button>
+                </div>
+                <div>
+                    <button onClick={() => {snakeApi.vectorUp()}}>&#129153;</button>
+                    <button onClick={() => {snakeApi.vectorDown()}}>&#129155;</button>
+                </div>
+            </div>
         </>
     )
 }

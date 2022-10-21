@@ -31,7 +31,7 @@ export const snakeApi = createApi($snakeParams, {
         if(vector === 0) {
             return {vector: vector, cord:cord, isLoose: isLoose}
         }
-        if(vector === 1) {
+        else if(vector === 1) {
             if(cord[cord.length-1][0] === 0) {
                 isLoose = true
             }
@@ -39,6 +39,7 @@ export const snakeApi = createApi($snakeParams, {
                 cord.shift()
                 cord.push([cord[cord.length-1][0]-1, cord[cord.length-1][1]])
             }
+
             return {vector: vector, cord: cord, isLoose: isLoose}
         }
         else if(vector === 2) {
@@ -49,6 +50,7 @@ export const snakeApi = createApi($snakeParams, {
                 cord.shift()
                 cord.push([cord[cord.length-1][0], cord[cord.length-1][1]+1])
             }
+
             return {vector: vector, cord: cord, isLoose: isLoose}
         }
         else if(vector === 3) {
@@ -59,6 +61,7 @@ export const snakeApi = createApi($snakeParams, {
                 cord.shift()
                 cord.push([cord[cord.length-1][0]+1, cord[cord.length-1][1]])
             }
+
             return {vector: vector, cord: cord, isLoose: isLoose}
         }
         else if(vector === 4) {
@@ -69,6 +72,7 @@ export const snakeApi = createApi($snakeParams, {
                 cord.shift()
                 cord.push([cord[cord.length-1][0], cord[cord.length-1][1]-1])
             }
+
             return {vector: vector, cord: cord, isLoose: isLoose}
         }
     },

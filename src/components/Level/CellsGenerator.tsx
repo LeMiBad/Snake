@@ -1,5 +1,4 @@
 import { useStore } from 'effector-react'
-import { $apple } from '../../store/apple'
 import { $gameSize } from '../../store/settingModel'
 import css from './Level.module.sass'
 

@@ -1,22 +1,32 @@
-import { useEffect, useState } from "react"
+import { useStore } from "effector-react"
+import { useState } from "react"
+import { $snakeParams } from "../../store/snakeModel"
+import { saveTimer } from "../../store/timerModel"
 
 const Timer = () => {
-    const [sec, setSec] = useState(0)
-    const [min, setMin] = useState(0)
+    const [seconds, setSeconds] = useState(0)
+    const [minutes, setMinutes] = useState(0)
 
-    useEffect(() => {
-        const timer = setInterval(() => {
-            setSec(sec+1)
-        }, 1000)
-        clearInterval(timer)
-    })
+
+    const {isLoose} = useStore($snakeParams)
+
+    const tick = setTimeout(() => {
+        setSeconds((seconds === 59)? 0 : seconds+1)
+    }, 1000)
+
+    setTimeout(() => {
+        setMinutes(minutes+1)
+    }, 61000)
 
     const parseTime = () => {
-        if(sec === 60) setMin(min+1)
-
-        if(String(sec).length === 2) return <>{`${min}: ${sec}`}</>
-        else return <>{`${min}: 0${sec}`}</>
+        return `${(minutes < 10)? `0${minutes}` : minutes} : ${(seconds < 10)? `0${seconds}` : seconds}`
     }
+
+    if(isLoose) {
+        clearTimeout(tick)
+        saveTimer(parseTime())
+    }
+
 
     return (
         <div>

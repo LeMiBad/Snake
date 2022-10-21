@@ -1,3 +1,31 @@
+@keyframes mobileEnter
+    0%
+        top: -33vh
+    100%
+        top: 0
+@keyframes mobileClose
+    0%
+        top: 0
+    100%
+        top: -33vh
+
+@media (max-width: 800px)
+    header
+        display: none !important
+    .mobileHeader
+        display: flex !important
+        position: absolute
+        top: -33vh
+        animation-duration: 0.7s !important
+        height: auto !important
+        align-items: center !important
+        flex-direction: column
+        *
+            text-align: center
+            margin: 20px 0
+            width: 100%
+
+    
 @keyframes slidein
     0%
         transform: translateX(-100vw)

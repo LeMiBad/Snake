@@ -1,8 +1,8 @@
 import { useStore } from 'effector-react'
-import { Navigate } from 'react-router-dom'
 import { $appleCounter, $record } from '../../store/apple'
 import { $snakeParams } from '../../store/snakeModel'
 import CenterWrapper from '../CenterWrapper/CenterWrapper'
+import LooseWindow from '../LooseWindow/LooseWindow'
 import CellsGenerator from './CellsGenerator'
 import css from './Level.module.sass'
 import Snake from './Snake'
@@ -13,11 +13,17 @@ const Level = () => {
     const record = useStore($record)
     const { isLoose } = useStore($snakeParams)
 
-    if(isLoose) return <Navigate to={'/'}/>
-
+    const loose = () => {
+        if(isLoose) {
+            return <LooseWindow apples={appleCounter} record={record}/>
+        }
+        else return <></>
+    }
+    
     return (
         <CenterWrapper>
             <>
+                {loose()}
                 <div className={css.stats}>
                     <div><div>{appleCounter} Яблок</div></div>
                     <div><div>Максимум: {record}</div></div>

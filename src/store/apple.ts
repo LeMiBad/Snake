@@ -7,10 +7,24 @@ const getRandomInt = (max: number) => {
 
 
 
-export const setLevel = createEvent<number>()
+export const setNewApple = createEvent<{size: number, cord: Array<Array<number>>}>()
 export const $apple = createStore([0, 2])
-    .on(setLevel, (_, size) => {
-        return [getRandomInt(size), getRandomInt(size)]
+    .on(setNewApple, (_, {size, cord}) => {
+        const newApple: any = () => {
+            let y = getRandomInt(size)
+            let x = getRandomInt(size)
+
+            for(let i = 0; i < cord.length; i++) {
+                const cor = cord[i]
+
+                if(cor[0] === y && cor[1] === x) {
+                    return newApple()
+                }
+            }
+            return [y, x]
+        }
+
+        return newApple()
     })
 
 export const incApple = createEvent<number>()
